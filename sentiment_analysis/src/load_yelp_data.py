@@ -3,7 +3,7 @@ from datasets import load_dataset
 from sklearn.model_selection import train_test_split
 
 
-def load_yelp_data():
+def load_data():
     print("Loading dataset...")
 
     ds = load_dataset("Johnnyeee/Yelpdata_663")
@@ -45,4 +45,4 @@ def load_yelp_data():
 
 
 if __name__ == "__main__":
-    load_yelp_data()
+    load_data()
