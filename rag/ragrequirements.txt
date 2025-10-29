@@ -1,0 +1,6 @@
+faiss-cpu
+numpy
+pandas
+datasets
+sentence_transformers
+tqdm
