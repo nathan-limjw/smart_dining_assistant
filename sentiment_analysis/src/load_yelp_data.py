@@ -5,43 +5,80 @@ from sklearn.model_selection import train_test_split
 
 def load_data():
     print("Loading dataset...")
-
     ds = load_dataset("Johnnyeee/Yelpdata_663")
-    df = pd.concat([ds[split].to_pandas() for split in ds.keys()], ignore_index=True)
-    print(f"Loaded {len(df)} rows")
 
-    if "categories" in df.columns:
-        df = df[df["categories"].str.contains("restaurant", case=False, na=False)]
-        print(f"Filtered dataset to only retain restaurant reviews: {len(df)} records")
+    train_df = ds["train"].to_pandas()
+    test_df = ds["test"].to_pandas()
 
-    df["sentiment"] = df["stars_x"].apply(
+    train_df = train_df[
+        train_df["categories"].str.contains("restaurant", case=False, na=False)
+    ]
+    test_df = test_df[
+        test_df["categories"].str.contains("restaurant", case=False, na=False)
+    ]
+    print(
+        f"Filtered dataset to only retain restaurant reviews: train = {len(train_df)}, test = {len(test_df)} "
+    )
+
+    train_df["sentiment"] = train_df["stars_x"].apply(
+        lambda x: 0 if x < 3 else (1 if x == 3 else 2)
+    )
+    test_df["sentiment"] = test_df["stars_x"].apply(
         lambda x: 0 if x < 3 else (1 if x == 3 else 2)
     )
 
-    df = df[["text", "sentiment"]].dropna()
+    train_df = train_df[["text", "sentiment"]].dropna()
+    test_df = test_df[["text", "sentiment"]].dropna()
 
-    df_balanced = pd.concat(
+    min_train_samples = train_df["sentiment"].value_counts().min()
+    samples_per_class = min(100000, min_train_samples)
+
+    print(f"Sampling {samples_per_class} from each class")
+
+    train_balanced = pd.concat(
         [
-            df[df["sentiment"] == 0].sample(n=100000, random_state=42),
-            df[df["sentiment"] == 1].sample(n=100000, random_state=42),
-            df[df["sentiment"] == 2].sample(n=100000, random_state=42),
+            train_df[train_df["sentiment"] == 0].sample(
+                n=samples_per_class, random_state=42
+            ),
+            train_df[train_df["sentiment"] == 1].sample(
+                n=samples_per_class, random_state=42
+            ),
+            train_df[train_df["sentiment"] == 2].sample(
+                n=samples_per_class, random_state=42
+            ),
+        ]
+    )
+    train_final, val = train_test_split(
+        train_balanced,
+        test_size=0.2,
+        stratify=train_balanced["sentiment"],
+        random_state=42,
+    )
+
+    min_train_samples = test_df["sentiment"].value_counts().min()
+    test_samples_per_class = min(15000, min_train_samples)
+
+    test_balanced = pd.concat(
+        [
+            test_df[test_df["sentiment"] == 0].sample(
+                n=test_samples_per_class, random_state=42
+            ),
+            test_df[test_df["sentiment"] == 1].sample(
+                n=test_samples_per_class, random_state=42
+            ),
+            test_df[test_df["sentiment"] == 2].sample(
+                n=test_samples_per_class, random_state=42
+            ),
         ]
     )
 
-    train, temp = train_test_split(
-        df_balanced, test_size=0.3, stratify=df_balanced["sentiment"], random_state=42
-    )
-    val, test = train_test_split(
-        temp, test_size=0.5, stratify=temp["sentiment"], random_state=42
-    )
-
-    train.to_csv("data/train.csv", index=False)
+    train_final.to_csv("data/train.csv", index=False)
     val.to_csv("data/val.csv", index=False)
-    test.to_csv("data/test.csv", index=False)
+    test_balanced.to_csv("data/test.csv", index=False)
 
-    print(f"Saved train ({len(train)}), val ({len(val)}), test ({len(test)})")
+    print("Data saved to /data")
 
-    return train, val, test
+    return train_final, val, test_balanced
 
 
 if __name__ == "__main__":
