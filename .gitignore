@@ -205,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+<<<<<<< HEAD
+=======
+sentiment_analysis/data/
+.DS_Store
+**/.DS_Store
+>>>>>>> 986401767618815353e84b781c6fc1d40cc02438
