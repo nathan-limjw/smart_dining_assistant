@@ -150,7 +150,12 @@ def run_hyperparameter_tuning():
 
         print("\nTraining with configs...")
         start_time = datetime.now()
+
         trainer.train()
+        trainer.save_model(f"models/{config['name']}")
+        tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+        tokenizer.save_pretrained(f"models/{config['name']}")
+
         end_time = datetime.now()
         training_time = (end_time - start_time).total_seconds() / 60
 
