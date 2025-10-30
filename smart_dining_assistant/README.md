@@ -1,1 +1,0 @@
-# smart_dining_assistant
