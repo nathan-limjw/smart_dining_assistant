@@ -1,0 +1,15 @@
+openai
+python-dotenv
+scipy
+matplotlib
+seaborn
+faiss-cpu
+numpy
+pandas
+datasets
+sentence_transformers
+tqdm
+torch
+transformers
+scikit-learn
+accelerate
