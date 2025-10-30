@@ -33,9 +33,9 @@ def load_and_tokenize_data():
     val_df = pd.read_csv("data/val.csv")
     test_df = pd.read_csv("data/test.csv")
 
-    train_df = train_df[:20]
-    val_df = val_df[:20]
-    test_df = test_df[:20]
+    train_df = train_df
+    val_df = val_df
+    test_df = test_df
 
     print("Loading tokenizer...")
     tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
