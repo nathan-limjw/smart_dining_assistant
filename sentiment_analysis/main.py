@@ -1,5 +1,7 @@
 import os
 
+import pandas as pd
+
 from src import SentimentAnalyzer, evaluate_model, load_data, run_hyperparameter_tuning
 
 os.makedirs("data", exist_ok=True)
@@ -12,8 +14,18 @@ evaluate_model()
 
 # TEST
 analyzer = SentimentAnalyzer()
-review = "This pasta is so bombs, I love it"
+restaurant_reviews = pd.DataFrame(
+    {
+        "text": [
+            "The food was delicious, totally would come back!",
+            "The waiter ignored us the entire time while we raised our hand",
+            "Food was good but the wait was long",
+            "I think the service was overall okay",
+            "There were rats running around the kitchen..",
+        ]
+    }
+)
 
-result = analyzer.analyze(review)
-print(f"Review: {review}")
-print(f"Sentiment: {result['sentiment']} (confidence: {result['confidence']:.2f})")
+
+result = analyzer.analyze_reviews(restaurant_reviews)
+print(result)
