@@ -1,7 +1,6 @@
 import os
 
 import pandas as pd
-
 from src import SentimentAnalyzer, evaluate_model, load_data, run_hyperparameter_tuning
 
 os.makedirs("data", exist_ok=True)
