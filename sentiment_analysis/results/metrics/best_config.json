@@ -1,0 +1,9 @@
+{
+    "config_name": "config_1_default",
+    "learning_rate": 2e-05,
+    "batch_size": 16,
+    "epochs": 3,
+    "weight_decay": 0.01,
+    "val_accuracy": 0.6293833333333333,
+    "val_f1": 0.6321811339541283
+}
