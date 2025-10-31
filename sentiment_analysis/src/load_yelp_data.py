@@ -20,11 +20,11 @@ def load_data():
         f"Filtered dataset to only retain restaurant reviews: train = {len(train_df)}, test = {len(test_df)} "
     )
 
-    train_df["sentiment"] = train_df["stars_x"].apply(
-        lambda x: 0 if x < 3 else (1 if x == 3 else 2)
+    train_df["sentiment"] = train_df["stars_y"].apply(
+        lambda y: 0 if y < 3 else (1 if y == 3 else 2)
     )
-    test_df["sentiment"] = test_df["stars_x"].apply(
-        lambda x: 0 if x < 3 else (1 if x == 3 else 2)
+    test_df["sentiment"] = test_df["stars_y"].apply(
+        lambda y: 0 if y < 3 else (1 if y == 3 else 2)
     )
 
     train_df = train_df[["text", "sentiment"]].dropna()
