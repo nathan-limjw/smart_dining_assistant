@@ -7,14 +7,15 @@ import pandas as pd
 import pickle
 import json
 import spacy
+from sentiment_analysis.src import SentimentAnalyzer
 
 #########PATHS
 # DIR = os.path.dirname(os.path.abspath(__file__)) # local only
 print("initialising paths")
-DATA_PATH = "/mnt/sdd/rag/ragdata_pa"
+DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
 METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
-CITIES_PATH = os.path.join("/mnt/sdd/rag", "city_aliases.json")
+CITIES_PATH = os.path.join("/opt/dlami/nvme/smart_dining_assistant/rag", "city_aliases.json")
 
 ########CITIES 
 nlp=spacy.load("en_core_web_sm")
@@ -95,7 +96,7 @@ class Retriever:
             r["retrieval_score"] = float(score)
 
             if analyzer is not None:
-                text_df = pd.DataFrame({"text": [res["chunk_text"]]})
+                text_df = pd.DataFrame({"text": [metadata.get("chunk_text","")]})
                 sentiment=analyzer.analyze_reviews(text_df)
                 r["sentiment"] = sentiment.iloc[0].get("sentiment", "unknown")
             
@@ -106,7 +107,6 @@ class Retriever:
     
 if __name__ == "__main__":
     print("importing SentimentAnalyzer")
-    from sentiment_model import SentimentAnalyzer
 
     print("-------------retrieval testing")
     retriever=Retriever()
@@ -114,9 +114,9 @@ if __name__ == "__main__":
 
     queries=[
         "good sushi in Philadelphia",
-        "restaurants to avoid in Ardmore",
+        "restaurants to avoid",
         "cheap korean food",
-        "best restaurant to do to"
+        "best restaurant to go to"
     ]
 
     for q in queries:

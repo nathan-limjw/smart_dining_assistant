@@ -31,7 +31,7 @@ print(df['state'].value_counts())
 #config
 
 DIR=os.path.dirname(os.path.abspath(__file__))
-DATA_PATH="/mnt/sdd/rag/ragdata_pa"
+DATA_PATH="/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 os.makedirs(DATA_PATH, exist_ok=True)
 BATCH_SIZE=10000
 CHUNK_SIZE=500

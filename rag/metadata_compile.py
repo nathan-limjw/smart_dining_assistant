@@ -4,7 +4,7 @@ import pandas as pd
 from tqdm import tqdm
 import re
 
-DATA_PATH="/mnt/sdd/rag/ragdata_pa"
+DATA_PATH="/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 all_metadata = []
 
 def get_batch_number(f):
