@@ -205,12 +205,18 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+<<<<<<< HEAD
+=======
 sentiment_analysis/data/
 .DS_Store
 **/.DS_Store
+<<<<<<< HEAD
 git update-index --assume-unchanged ragdata_ca/*
 git update-index --assume-unchanged sentiment_analysis/models/*
 "ragdata_ca/" 
 "sentiment_analysis/models/" 
 "ragdata_ca/" 
 "sentiment_analysis/models/" 
+=======
+>>>>>>> 986401767618815353e84b781c6fc1d40cc02438
+>>>>>>> 8bb1d1c7e8ddf1410a8519fa05947e8c30389014
