@@ -212,3 +212,5 @@ git update-index --assume-unchanged ragdata_ca/*
 git update-index --assume-unchanged sentiment_analysis/models/*
 "ragdata_ca/" 
 "sentiment_analysis/models/" 
+"ragdata_ca/" 
+"sentiment_analysis/models/" 
