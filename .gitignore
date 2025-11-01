@@ -208,9 +208,5 @@ __marimo__/
 sentiment_analysis/data/
 .DS_Store
 **/.DS_Store
-git update-index --assume-unchanged ragdata_ca/*
 git update-index --assume-unchanged sentiment_analysis/models/*
-"ragdata_ca/" 
-"sentiment_analysis/models/" 
-"ragdata_ca/" 
 "sentiment_analysis/models/" 
