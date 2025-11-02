@@ -2,7 +2,7 @@ from transformers import pipeline
 
 
 class SentimentAnalyzer:
-    def __init__(self, model_path="sentiment_analysis/models/sentiment_model"):
+    def __init__(self, model_path="models/sentiment_model"):
         """
         Loads the trained sentiment model
         """
