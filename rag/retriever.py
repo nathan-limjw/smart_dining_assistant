@@ -10,7 +10,14 @@ import spacy
 from sentiment_analysis.src import SentimentAnalyzer
 
 #########PATHS
-# DIR = os.path.dirname(os.path.abspath(__file__)) # local only
+# # LOCAL PATHS
+# DIR = os.path.dirname(os.path.abspath(__file__)) 
+# DATA_PATH = os.path.join(DIR,"../ragdata_ca")
+# INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
+# METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
+# CITIES_PATH = os.path.join(DIR, "../rag", "city_aliases.json")
+
+#RONIN MACHINE PATHS
 print("initialising paths")
 DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
@@ -70,6 +77,8 @@ class Retriever:
                  , query
                  , top_k=5
                  , analyzer=None
+                 , sem_sim_w=0.7
+                 , sentiment_w=0.3
                  ):
         detected_city = detect_city_query(query, self.city_aliases)
         if detected_city:
@@ -84,6 +93,15 @@ class Retriever:
         scores, indices = self.index.search(query_emb, top_k*20)
         res = []
 
+        #analyse query sentiment
+        if analyzer is not None:
+            query_sentiment, query_confidence = None, 1.0
+            query_df = pd.DataFrame({"text":[query]})
+            query_sent = analyzer.analyze_reviews(query_df).iloc[0]
+            query_sentiment = query_sent["sentiment"]
+            query_confidence = query_sent["sentiment_confidence"]
+            print(f"query sentiment: {query_sentiment}, conf: {query_confidence:.2f}")
+
         for idx, score in zip(indices[0], scores[0]):
             metadata = self.metadata_df.iloc[int(idx)]
 
@@ -97,13 +115,24 @@ class Retriever:
 
             if analyzer is not None:
                 text_df = pd.DataFrame({"text": [metadata.get("chunk_text","")]})
-                sentiment=analyzer.analyze_reviews(text_df)
-                r["sentiment"] = sentiment.iloc[0].get("sentiment", "unknown")
+                sent_df=analyzer.analyze_reviews(text_df).iloc[0]
+                r["sentiment"] = sent_df["sentiment"]
+                r["sentiment_confidence"] = sent_df["sentiment_confidence"]
+
+                same_sentiment = 1.0 if r["sentiment"] == query_sentiment else 0.0
+                r["combined_score"] = (
+                    sem_sim_w * r["retrieval_score"]
+                    + sentiment_w * same_sentiment * query_confidence * r["sentiment_confidence"]
+                )
+            else:
+                r["combined_score"] = r["retrieval_score"]
             
             res.append(r)
-            if len(res)>=top_k:
+            if len(res)>=top_k*20:
                 break
-        return res
+
+        res.sort(key=lambda x:x["combined_score"], reverse=True)
+        return res[:top_k]
     
 if __name__ == "__main__":
     print("importing SentimentAnalyzer")
