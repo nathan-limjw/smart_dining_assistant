@@ -1,4 +1,4 @@
-# send a prompt to OpenAI and returns the generated answer
+# OPENAI API call (send a prompt to OpenAI and returns the generated answer)
 
 from openai import OpenAI # library to interact with OpenAI REST API, send request & receive response from GPT models
 import os
