@@ -77,8 +77,8 @@ class Retriever:
                  , query
                  , top_k=5
                  , analyzer=None
-                 , sem_sim_w=0.7
-                 , sentiment_w=0.3
+                 , sem_sim_w=0.8
+                 , sentiment_w=0.2
                  ):
         detected_city = detect_city_query(query, self.city_aliases)
         if detected_city:
@@ -145,7 +145,32 @@ if __name__ == "__main__":
         "good sushi in Philadelphia",
         "restaurants to avoid",
         "cheap korean food",
-        "best restaurant to go to"
+        "best restaurant to go to",
+        #positive food specific
+        "best pizza",
+        "amazing brunch spots",
+        "good vegan restaurants",
+        "affordable fine dining with good reviews",
+        #negative
+        "places to avoid",
+        "restaurants with bad service",
+        "overrated sushi places",
+        "worst buffet in town",
+        # neutral
+        "places to eat alone",
+        "casual dining options",
+        "good lunch spots",
+        "popular family-friendly restaurants",
+        # ambiguous
+        "restaurants that are worth the hype",
+        "restaurants that are not worth visiting",
+        "quiet cafes for working",
+        "expensive but good restaurants",
+        #city detection
+        "good sushi in Philadelphia",
+        "cheap korean food in King of Prussia",
+        "restaurants to avoid in West Chester",
+        "vegan cafes in Blue Bell"
     ]
 
     for q in queries:
