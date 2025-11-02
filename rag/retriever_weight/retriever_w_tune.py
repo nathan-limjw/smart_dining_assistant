@@ -3,18 +3,26 @@ import os
 import pandas as pd
 from sentiment_analysis.src import SentimentAnalyzer
 import matplotlib.pyplot as plt
-
+from rag.retriever import INDEX_PATH, METADATA_PATH, Retriever
 
 #########PATHS
-DIR = os.path.dirname(os.path.abspath(__file__)) # local only
-print("initialising paths")
-DATA_PATH = os.path.join(DIR, "../ragdata_ca")
+# #local
+# DIR = os.path.dirname(os.path.abspath(__file__)) # local only
+# print("initialising paths")
+# DATA_PATH = os.path.join(DIR, "../ragdata_ca")
 
-from rag.retriever import INDEX_PATH, METADATA_PATH, Retriever
-INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
-METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
-OUTPUT_PATH = os.path.join(DIR, "retriever_weight")
+# INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
+# METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
+# OUTPUT_PATH = os.path.join(DIR, "retriever_weight")
+# os.makedirs(OUTPUT_PATH, exist_ok=True)
+
+#ronin
+DIR="/opt/dlami/nvme/smart_dining_assistant"
+DATA_PATH = os.path.join(DIR, "rag","ragdata_pa")
+OUTPUT_PATH = os.path.join(DIR,"rag", "retriever_weight")
 os.makedirs(OUTPUT_PATH, exist_ok=True)
+INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
+METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
 
 #####
 
