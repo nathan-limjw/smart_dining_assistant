@@ -1,0 +1,156 @@
+[
+    {
+        "sentiment": "negative",
+        "query": "I had a horrible and stressful day. I don't care, just find some cheap comfort food in Philadelphia."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "I need a restaurant with good wifi in Philadelphia."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "I don't know what I want... maybe Thai? Mexican? I cannot decide."
+    },
+
+    {
+        "sentiment": "positive",
+        "query":"I need a restaurant with good wifi in Philadelphia."
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "My feet are killing me. I need somewhere to eat *right now* that is close by in Eddystone."
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I am so excited for my birthday, where should I go for a fun dinner in Springfield?"
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "This rain is making me miserable. I want a warm, cozy bowl of soup in Blue Bell."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "I need a quiet place to read a book and have coffee."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "What do you suggest for lunch in West Chester?"
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "It is my anniversary! I want to find the most romantic, beautiful restaurant in Philadelphia."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "Just suggest something for me in King of Prussia. I am not picky."
+
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "I need to find a place in West Chester with outdoor seating."
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "The service at my hotel is awful. Find me a bar in Philadelphia with friendly bartenders."
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I just won a lottery today! Suggest a highly-rated pizza place."
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "This has been the longest work week ever. I am too tired to cook. Find me some easy takeaway in Media."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "What restaurants in Blue Bell are open past 10 PM?"
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I love this weather. Where can I find a great restaurant in Blue Bell with a nice outdoor patio?"
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "I am stuck in traffic and going to be late. I need to find a place in King of Prussia where I can just grab and go."
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "I am tired and do not work to spend a lot. What's a good and affordable dinner in West Chester?"
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "Suggest a couple of different dinner ideas for me in Philadelphia."
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I just aced my exam! Where can I get a huge, celebratory burger?"
+    }, 
+
+    {
+        "sentiment": "negative",
+        "query": "I am so sick of waiting in long lines. Is there anywhere in King of Prussia I can get a quick lunch without a wait?"
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "We are looking for a great dim sum place in Philadelphia with authentic food!"
+
+    },
+
+    {
+        "sentiment":"neutral",
+        "query": "What is the most talked-about, must-try restaraunt in Conshohocken right now?"
+    },
+    
+    {
+        "sentiment": "positive",
+        "query": "My family is in town and I want to take them somewhere really nice in King of Pussia. Any ideas?"
+
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "I had enough of all the overrated, expensive places in Conshohocken. Just find me something that is actually food and affordable."
+    },
+
+    {
+        "sentiment": "negative",
+        "query": "I am too tired to even read a menu. Please suggest one simple, comforting dish for me in West Chester."
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I want to try a new type of food! Please propose one to me in Philadelphia."
+    },
+
+    {
+        "sentiment": "neutral",
+        "query": "I am trying to decide between Chinese and Indian food in West Chester."
+
+    },
+
+    {
+        "sentiment": "positive",
+        "query": "I am in Conshohocken and want to find a cozy and adorable cafe to relax in."
+    }
+
+]
