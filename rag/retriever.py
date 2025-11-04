@@ -10,19 +10,21 @@ import spacy
 from sentiment_analysis.src import SentimentAnalyzer
 
 #########PATHS
-# # LOCAL PATHS
-# DIR = os.path.dirname(os.path.abspath(__file__)) 
-# DATA_PATH = os.path.join(DIR,"../ragdata_ca")
-# INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
-# METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
-# CITIES_PATH = os.path.join(DIR, "../rag", "city_aliases.json")
+#LOCAL PATHS
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) 
 
-#RONIN MACHINE PATHS
-print("initialising paths")
-DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
+print("Initialising Paths")
+DATA_PATH = os.path.join(CURRENT_DIR, "ragdata_pa")
 INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
 METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
-CITIES_PATH = os.path.join("/opt/dlami/nvme/smart_dining_assistant/rag", "city_aliases.json")
+CITIES_PATH = os.path.join(CURRENT_DIR, "city_aliases.json")
+
+#RONIN MACHINE PATHS
+#DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
+#INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
+#METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
+#CITIES_PATH = os.path.join("/opt/dlami/nvme/smart_dining_assistant/rag", "city_aliases.json")
+
 
 ########CITIES 
 nlp=spacy.load("en_core_web_sm")
@@ -65,12 +67,12 @@ class Retriever:
 
         with open(CITIES_PATH, "r") as f:
             self.city_aliases=json.load(f)
-        print("loaded cities json")
+        print("Loaded cities json")
 
         if self.index.ntotal != len(self.metadata_df):
             print("WARNING: index size and metadata size do not match")
 
-        print("init embedding model")
+        print("Init embedding model")
         self.embedding_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
     def retrieve(self
@@ -82,9 +84,9 @@ class Retriever:
                  ):
         detected_city = detect_city_query(query, self.city_aliases)
         if detected_city:
-            print(f"city detected: {detected_city}")
+            print(f"City Detected: {detected_city}")
         else:
-            print("no city detected")
+            print("No city detected")
 
         query_emb = self.embedding_model.encode([query], normalize_embeddings=True)
         query_emb=query_emb.astype("float32")
@@ -100,7 +102,7 @@ class Retriever:
             query_sent = analyzer.analyze_reviews(query_df).iloc[0]
             query_sentiment = query_sent["sentiment"]
             query_confidence = query_sent["sentiment_confidence"]
-            print(f"query sentiment: {query_sentiment}, conf: {query_confidence:.2f}")
+            print(f"Query sentiment: {query_sentiment}, Conf: {query_confidence:.2f}")
 
         for idx, score in zip(indices[0], scores[0]):
             metadata = self.metadata_df.iloc[int(idx)]
@@ -135,7 +137,7 @@ class Retriever:
         return res[:top_k]
     
 if __name__ == "__main__":
-    print("importing SentimentAnalyzer")
+    print("Importing SentimentAnalyzer")
 
     print("-------------retrieval testing")
     retriever=Retriever()
