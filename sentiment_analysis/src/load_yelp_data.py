@@ -31,7 +31,7 @@ def load_data():
     test_df = test_df[["text", "sentiment"]].dropna()
 
     min_train_samples = train_df["sentiment"].value_counts().min()
-    samples_per_class = min(100000, min_train_samples)
+    samples_per_class = min(10000, min_train_samples)
 
     print(f"Sampling {samples_per_class} from each class")
 
