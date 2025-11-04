@@ -210,3 +210,5 @@ sentiment_analysis/data/
 **/.DS_Store
 git update-index --assume-unchanged sentiment_analysis/models/*
 "sentiment_analysis/models/" 
+
+rag/ragdata_pa
