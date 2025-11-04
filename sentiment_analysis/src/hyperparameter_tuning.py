@@ -77,34 +77,34 @@ def run_hyperparameter_tuning():
             "epochs": 3,
             "weight_decay": 0.01,
         },
-        # {
-        #     "name": "config_2_higher_lr",
-        #     "learning_rate": 3e-5,
-        #     "batch_size": 16,
-        #     "epochs": 3,
-        #     "weight_decay": 0.01,
-        # },
-        # {
-        #     "name": "config_3_lower_lr_more_epochs",
-        #     "learning_rate": 1e-5,
-        #     "batch_size": 16,
-        #     "epochs": 5,
-        #     "weight_decay": 0.01,
-        # },
-        # {
-        #     "name": "config_4_larger_batch",
-        #     "learning_rate": 2e-5,
-        #     "batch_size": 32,
-        #     "epochs": 3,
-        #     "weight_decay": 0.01,
-        # },
-        # {
-        #     "name": "config_5_lower_weight_decay",
-        #     "learning_rate": 2e-5,
-        #     "batch_size": 16,
-        #     "epochs": 3,
-        #     "weight_decay": 0.001,
-        # },
+        {
+            "name": "config_2_higher_lr",
+            "learning_rate": 3e-5,
+            "batch_size": 16,
+            "epochs": 3,
+            "weight_decay": 0.01,
+        },
+        {
+            "name": "config_3_lower_lr_more_epochs",
+            "learning_rate": 1e-5,
+            "batch_size": 16,
+            "epochs": 5,
+            "weight_decay": 0.01,
+        },
+        {
+            "name": "config_4_larger_batch",
+            "learning_rate": 2e-5,
+            "batch_size": 32,
+            "epochs": 3,
+            "weight_decay": 0.01,
+        },
+        {
+            "name": "config_5_lower_weight_decay",
+            "learning_rate": 2e-5,
+            "batch_size": 16,
+            "epochs": 3,
+            "weight_decay": 0.001,
+        },
     ]
 
     train_dataset, val_dataset, test_dataset = load_and_tokenize_data()
