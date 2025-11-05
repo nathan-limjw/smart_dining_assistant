@@ -12,12 +12,12 @@ from sentiment_analysis.src import SentimentAnalyzer
 #########PATHS
 # # LOCAL PATHS
 # DIR = os.path.dirname(os.path.abspath(__file__)) 
-# DATA_PATH = os.path.join(DIR,"../ragdata_ca")
+# DATA_PATH = os.path.join(DIR,"ragdata_pa")
 # INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
-# METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
-# CITIES_PATH = os.path.join(DIR, "../rag", "city_aliases.json")
+# METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
+# CITIES_PATH = os.path.join(DIR, "city_aliases.json")
 
-#RONIN MACHINE PATHS
+# RONIN MACHINE PATHS
 print("initialising paths")
 DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
@@ -31,24 +31,16 @@ def normalize_name(name):
     return re.sub(r"[^\w\s]", "", name.lower()).strip()
 
 def detect_city_query(query, alias_map):
-    doc=nlp(query)
     q_norm = normalize_name(query)
     detected=None
 
-    for key in alias_map.keys():
-        for ent in doc:
-            if key in ent.text.lower():
-                negated = any(child.dep_ == "neg" or child.text.lower() in ["not", 'except', 'without']
-                              for child in ent.lefts)
-                if negated:
-                    print(f"negated city {key}")
-                    continue
-                detected=alias_map[key]
-                break
-        if detected:
-            break
+    for key, canonical in alias_map.items():
+        if key in q_norm:
+            if any(neg in q_norm for neg in [f"not {key}", f"without {key}", f"except {key}"]):
+                print(f"negated city {key}")
+                continue
+            detected = canonical
     return detected
-
 
 #########RETRIEVAL
 
@@ -134,51 +126,72 @@ class Retriever:
         res.sort(key=lambda x:x["combined_score"], reverse=True)
         return res[:top_k]
     
-if __name__ == "__main__":
-    print("importing SentimentAnalyzer")
+# if __name__ == "__main__":
+#     print("importing SentimentAnalyzer")
 
-    print("-------------retrieval testing")
-    retriever=Retriever()
-    analyzer=SentimentAnalyzer()
+#     print("-------------retrieval testing")
+#     retriever=Retriever()
+#     analyzer=SentimentAnalyzer()
 
-    queries=[
-        "good sushi in Philadelphia",
-        "restaurants to avoid",
-        "cheap korean food",
-        "best restaurant to go to",
-        #positive food specific
-        "best pizza",
-        "amazing brunch spots",
-        "good vegan restaurants",
-        "affordable fine dining with good reviews",
-        #negative
-        "places to avoid",
-        "restaurants with bad service",
-        "overrated sushi places",
-        "worst buffet in town",
-        # neutral
-        "places to eat alone",
-        "casual dining options",
-        "good lunch spots",
-        "popular family-friendly restaurants",
-        # ambiguous
-        "restaurants that are worth the hype",
-        "restaurants that are not worth visiting",
-        "quiet cafes for working",
-        "expensive but good restaurants",
-        #city detection
-        "good sushi in Philadelphia",
-        "cheap korean food in King of Prussia",
-        "restaurants to avoid in West Chester",
-        "vegan cafes in Blue Bell"
-    ]
+#     queries=[
+#         # "good sushi in Philadelphia",
+#         # "restaurants to avoid",
+#         # "cheap korean food",
+#         # "best restaurant to go to",
+#         # #positive food specific
+#         # "best pizza",
+#         # "amazing brunch spots",
+#         # "good vegan restaurants",
+#         # "affordable fine dining with good reviews",
+#         # #negative
+#         # "places to avoid",
+#         # "restaurants with bad service",
+#         # "overrated sushi places",
+#         # "worst buffet in town",
+#         # # neutral
+#         # "places to eat alone",
+#         # "casual dining options",
+#         # "good lunch spots",
+#         # "popular family-friendly restaurants",
+#         # # ambiguous
+#         # "restaurants that are worth the hype",
+#         # "restaurants that are not worth visiting",
+#         # "quiet cafes for working",
+#         # "expensive but good restaurants",
+#         # #city detection
+#         # "good sushi in Philadelphia",
+#         "cheap korean food in King of Prussia",
+#         "restaurants to avoid in West Chester",
+#         "vegan cafes in Blue Bell"
+#     ]
 
-    for q in queries:
-        print(f"\n:----------------query: {q}")
-        result = retriever.retrieve(q, top_k=5, analyzer=analyzer)
-        for i, res in enumerate(result):
-            print(f"\n -------------------RESULT {i+1}:----------------")
-            print(f"{res.get('review_stars', '?')} | sentiment: {res.get('sentiment')}")
-            print(f"{res.get('city')} | {res.get('name')}")
-            print(f"score: {res['retrieval_score']:.4f}")
-            print(f"{res['chunk_text']}")
+#     for q in queries:
+#         print(f"\n:----------------query: {q}")
+#         result = retriever.retrieve(q, top_k=5, analyzer=analyzer)
+#         for i, res in enumerate(result):
+#             print(f"\n -------------------RESULT {i+1}:----------------")
+#             print(f"{res.get('review_stars', '?')} | sentiment: {res.get('sentiment')}")
+#             print(f"{res.get('city')} | {res.get('name')}")
+#             print(f"score: {res['retrieval_score']:.4f}")
+#             print(f"{res['chunk_text']}")
+
+# if __name__ == "__main__":
+#     print("-------------CITY DETECTION TEST-------------")
+
+#     # load aliases
+#     with open(CITIES_PATH, "r") as f:
+#         city_aliases = json.load(f)
+
+#     test_queries = [
+#         "good sushi in Philadelphia",
+#         "cheap korean food in King of Prussia",
+#         "vegan cafes in Blue Bell",
+#         "restaurants to avoid in West Chester",
+#         "not Philadelphia but nearby",
+#         "fine dining without Bryn Mawr",
+#     ]
+
+#     for q in test_queries:
+#         detected = detect_city_query(q, city_aliases)
+#         print(f"Query: {q}")
+#         print(f"→ Detected city: {detected}\n")
