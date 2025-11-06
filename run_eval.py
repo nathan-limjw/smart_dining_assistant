@@ -3,6 +3,7 @@
 import sys
 import json
 import csv
+import time
 from dotenv import load_dotenv
 load_dotenv() # load .env to get API key
 
@@ -95,6 +96,8 @@ with open(output_filename, 'w', newline = '', encoding = 'utf-8') as f:
                 str(e),
                 str(e)
             ])
+
+        time.sleep(20) # to avoid rate limiting
 
 print("\n --- EVALUATION COMPLETED --- ")
 

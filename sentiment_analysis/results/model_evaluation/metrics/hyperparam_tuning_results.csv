@@ -1,0 +1,2 @@
+config_name,config_number,learning_rate,batch_size,epochs,weight_decay,val_accuracy,val_precision,val_recall,val_f1,val_loss,training_time_minutes
+config_2_higher_lr,1,3e-05,16,3,0.01,0.8407333333333333,0.8421938631985143,0.8407333333333333,0.841340573422977,0.3903138041496277,569.8872060666667

@@ -15,3 +15,4 @@ accelerate
 google-genai
 spacy
 en_core_web_sm
+time
