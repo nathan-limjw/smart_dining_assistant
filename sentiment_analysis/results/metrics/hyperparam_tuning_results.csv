@@ -1,2 +1,0 @@
-config_name,config_number,learning_rate,batch_size,epochs,weight_decay,val_accuracy,val_precision,val_recall,val_f1,val_loss,training_time_minutes
-config_1_default,1,2e-05,16,3,0.01,0.8410333333333333,0.8420891907332048,0.8410333333333333,0.8414902328055971,0.3888019323348999,541.9388584833333
