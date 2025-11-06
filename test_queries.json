@@ -1,8 +1,4 @@
 [
-    {
-        "sentiment": "negative",
-        "query": "I had a horrible and stressful day. I don't care, just find some cheap comfort food in Willow Grove."
-    },
 
     {
         "sentiment": "neutral",
@@ -53,11 +49,6 @@
         "sentiment": "neutral",
         "query": "Just suggest something for me in King of Prussia. I am not picky."
 
-    },
-
-    {
-        "sentiment": "neutral",
-        "query": "I need to find a place in Warminster with outdoor seating."
     },
 
     {
@@ -120,12 +111,6 @@
         "sentiment":"neutral",
         "query": "What is the most talked-about, must-try restaraunt in Conshohocken right now?"
     },
-    
-    {
-        "sentiment": "positive",
-        "query": "My family is in town and I want to take them somewhere really nice in King of Pussia. Any ideas?"
-
-    },
 
     {
         "sentiment": "negative",
@@ -135,17 +120,6 @@
     {
         "sentiment": "negative",
         "query": "I am too tired to even read a menu. Please suggest one simple, comforting dish for me in King of Prussia."
-    },
-
-    {
-        "sentiment": "positive",
-        "query": "I want to try a new type of food! Please propose one to me in Philadelphia."
-    },
-
-    {
-        "sentiment": "neutral",
-        "query": "I am trying to decide between Chinese and Indian food in Philadelphia."
-
     },
 
     {
