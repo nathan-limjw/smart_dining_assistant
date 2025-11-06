@@ -1,7 +1,7 @@
 [
     {
         "sentiment": "negative",
-        "query": "I had a horrible and stressful day. I don't care, just find some cheap comfort food in Philadelphia."
+        "query": "I had a horrible and stressful day. I don't care, just find some cheap comfort food in Willow Grove."
     },
 
     {
@@ -46,7 +46,7 @@
 
     {
         "sentiment": "positive",
-        "query": "It is my anniversary! I want to find the most romantic, beautiful restaurant in Philadelphia."
+        "query": "It is my anniversary! I want to find the most romantic, beautiful restaurant in Yardley."
     },
 
     {
@@ -57,7 +57,7 @@
 
     {
         "sentiment": "neutral",
-        "query": "I need to find a place in West Chester with outdoor seating."
+        "query": "I need to find a place in Warminster with outdoor seating."
     },
 
     {
@@ -97,7 +97,7 @@
 
     {
         "sentiment": "neutral",
-        "query": "Suggest a couple of different dinner ideas for me in Philadelphia."
+        "query": "Suggest a couple of different dinner ideas for me in Willow Grove."
     },
 
     {
