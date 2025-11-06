@@ -6,7 +6,7 @@
 
     {
         "sentiment": "neutral",
-        "query": "I need a restaurant with good wifi in Philadelphia."
+        "query": "What are some family-friendly restaurants in Springfield?"
     },
 
     {
@@ -16,12 +16,12 @@
 
     {
         "sentiment": "positive",
-        "query":"I need a restaurant with good wifi in Philadelphia."
+        "query":"I'm so excited to explore new cuisines! What's unique in Springfield?"
     },
 
     {
         "sentiment": "negative",
-        "query": "My feet are killing me. I need somewhere to eat *right now* that is close by in Eddystone."
+        "query": "My feet are killing me. I need somewhere to eat *right now* that is close by in Ardmore."
     },
 
     {
@@ -41,7 +41,7 @@
 
     {
         "sentiment": "neutral",
-        "query": "What do you suggest for lunch in West Chester?"
+        "query": "What do you suggest for lunch in King of Prussia?"
     },
 
     {
@@ -62,7 +62,7 @@
 
     {
         "sentiment": "negative",
-        "query": "The service at my hotel is awful. Find me a bar in Philadelphia with friendly bartenders."
+        "query": "The service at my hotel is awful. Find me a cafe in Philadelphia with nice outdoor seating."
     },
 
     {
@@ -92,7 +92,7 @@
 
     {
         "sentiment": "negative",
-        "query": "I am tired and do not work to spend a lot. What's a good and affordable dinner in West Chester?"
+        "query": "I am tired and do not work to spend a lot. What's a good and affordable dinner in Media?"
     },
 
     {
@@ -112,7 +112,7 @@
 
     {
         "sentiment": "positive",
-        "query": "We are looking for a great dim sum place in Philadelphia with authentic food!"
+        "query": "We are looking for a great dim sum place with authentic food!"
 
     },
 
@@ -134,7 +134,7 @@
 
     {
         "sentiment": "negative",
-        "query": "I am too tired to even read a menu. Please suggest one simple, comforting dish for me in West Chester."
+        "query": "I am too tired to even read a menu. Please suggest one simple, comforting dish for me in King of Prussia."
     },
 
     {
@@ -144,7 +144,7 @@
 
     {
         "sentiment": "neutral",
-        "query": "I am trying to decide between Chinese and Indian food in West Chester."
+        "query": "I am trying to decide between Chinese and Indian food in Philadelphia."
 
     },
 
