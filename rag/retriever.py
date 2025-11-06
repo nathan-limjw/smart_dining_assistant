@@ -6,7 +6,6 @@ from sentence_transformers import SentenceTransformer
 import pandas as pd
 import pickle
 import json
-import spacy
 from sentiment_analysis.src import SentimentAnalyzer
 
 #########PATHS
@@ -22,18 +21,10 @@ print("initialising paths")
 DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
 INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
 METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
-CITIES_PATH = os.path.join(CURRENT_DIR, "city_aliases.json")
-
-#RONIN MACHINE PATHS
-#DATA_PATH = "/opt/dlami/nvme/smart_dining_assistant/rag/ragdata_pa"
-#INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
-#METADATA_PATH = os.path.join(DATA_PATH, "pa_metadata.pkl")
-#CITIES_PATH = os.path.join("/opt/dlami/nvme/smart_dining_assistant/rag", "city_aliases.json")
+CITIES_PATH = os.path.join("/opt/dlami/nvme/smart_dining_assistant/rag", "city_aliases.json")
 
 
 ########CITIES 
-nlp=spacy.load("en_core_web_sm")
-
 def normalize_name(name):
     return re.sub(r"[^\w\s]", "", name.lower()).strip()
 
