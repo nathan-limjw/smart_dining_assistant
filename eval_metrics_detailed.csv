@@ -1,0 +1,51 @@
+Query,ExpectedSentiment,Variant,Tokens,Sentences,VenuesMentioned,GroundedAny,Hallucination,GroundingScoreBigramJ,SentimentAdherence,PolicyCompliance,Overload
+What are some family-friendly restaurants in Springfield?,neutral,A,48,3,3,1,0,0.0191,0,0,0
+What are some family-friendly restaurants in Springfield?,neutral,B,98,5,3,1,0,0.0931,0,0,0
+I don't know what I want... maybe Thai? Mexican? I cannot decide.,neutral,A,48,3,2,1,0,0.1091,0,0,0
+I don't know what I want... maybe Thai? Mexican? I cannot decide.,neutral,B,54,3,1,1,0,0.0734,0,0,0
+I'm so excited to explore new cuisines! What's unique in Springfield?,positive,A,48,3,3,1,0,0.0234,1,1,0
+I'm so excited to explore new cuisines! What's unique in Springfield?,positive,B,103,5,3,1,0,0.1225,1,1,0
+My feet are killing me. I need somewhere to eat *right now* that is close by in Ardmore.,negative,A,37,2,2,1,0,0.0625,0,0,0
+My feet are killing me. I need somewhere to eat *right now* that is close by in Ardmore.,negative,B,30,2,1,1,0,0.2453,0,0,0
+"I am so excited for my birthday, where should I go for a fun dinner in Springfield?",positive,A,44,2,2,1,0,0.0328,1,1,0
+"I am so excited for my birthday, where should I go for a fun dinner in Springfield?",positive,B,52,3,2,1,0,0.026,1,1,0
+"This rain is making me miserable. I want a warm, cozy bowl of soup in Blue Bell.",negative,A,40,3,1,1,0,0.1429,0,0,0
+"This rain is making me miserable. I want a warm, cozy bowl of soup in Blue Bell.",negative,B,48,4,1,1,0,0.0762,0,0,0
+I need a quiet place to read a book and have coffee.,neutral,A,37,2,2,1,0,0.0333,1,1,0
+I need a quiet place to read a book and have coffee.,neutral,B,20,2,1,1,0,0.1316,1,1,0
+What do you suggest for lunch in King of Prussia?,neutral,A,58,3,3,1,0,0.038,0,0,0
+What do you suggest for lunch in King of Prussia?,neutral,B,99,5,3,1,0,0.09,0,0,0
+"It is my anniversary! I want to find the most romantic, beautiful restaurant in Yardley.",positive,A,30,2,1,1,0,0.0541,1,0,0
+"It is my anniversary! I want to find the most romantic, beautiful restaurant in Yardley.",positive,B,114,7,2,1,0,0.0931,1,1,0
+Just suggest something for me in King of Prussia. I am not picky.,neutral,A,42,2,2,1,0,0.0258,1,1,0
+Just suggest something for me in King of Prussia. I am not picky.,neutral,B,129,7,3,1,0,0.1448,0,0,1
+The service at my hotel is awful. Find me a cafe in Philadelphia with nice outdoor seating.,negative,A,46,1,1,1,0,0.0169,1,0,0
+The service at my hotel is awful. Find me a cafe in Philadelphia with nice outdoor seating.,negative,B,55,3,0,0,1,0.0075,1,1,0
+I just won a lottery today! Suggest a highly-rated pizza place.,positive,A,55,2,2,1,0,0.0778,1,1,0
+I just won a lottery today! Suggest a highly-rated pizza place.,positive,B,52,4,2,1,0,0.0526,1,1,0
+This has been the longest work week ever. I am too tired to cook. Find me some easy takeaway in Media.,negative,A,35,2,2,1,0,0.0429,0,0,0
+This has been the longest work week ever. I am too tired to cook. Find me some easy takeaway in Media.,negative,B,59,4,1,1,0,0.0317,0,1,0
+What restaurants in Blue Bell are open past 10 PM?,neutral,A,32,2,0,0,1,0.0106,0,0,0
+What restaurants in Blue Bell are open past 10 PM?,neutral,B,80,5,1,1,0,0.0082,0,1,0
+I love this weather. Where can I find a great restaurant in Blue Bell with a nice outdoor patio?,positive,A,31,2,1,1,0,0.0755,0,0,0
+I love this weather. Where can I find a great restaurant in Blue Bell with a nice outdoor patio?,positive,B,77,5,1,1,0,0.0796,1,0,0
+I am stuck in traffic and going to be late. I need to find a place in King of Prussia where I can just grab and go.,negative,A,43,2,1,1,0,0.0339,1,0,0
+I am stuck in traffic and going to be late. I need to find a place in King of Prussia where I can just grab and go.,negative,B,63,3,1,1,0,0.0253,1,1,0
+I am tired and do not work to spend a lot. What's a good and affordable dinner in Media?,negative,A,38,3,1,1,0,0.0426,0,0,0
+I am tired and do not work to spend a lot. What's a good and affordable dinner in Media?,negative,B,44,3,1,1,0,0.1304,0,0,0
+Suggest a couple of different dinner ideas for me in Willow Grove.,neutral,A,36,2,2,1,0,0.0381,0,1,0
+Suggest a couple of different dinner ideas for me in Willow Grove.,neutral,B,115,4,3,1,0,0.1314,0,0,0
+"I just aced my exam! Where can I get a huge, celebratory burger?",positive,A,39,3,3,1,0,0.0855,1,1,0
+"I just aced my exam! Where can I get a huge, celebratory burger?",positive,B,107,4,3,1,0,0.1707,1,1,0
+I am so sick of waiting in long lines. Is there anywhere in King of Prussia I can get a quick lunch without a wait?,negative,A,43,3,2,1,0,0.1333,0,0,0
+I am so sick of waiting in long lines. Is there anywhere in King of Prussia I can get a quick lunch without a wait?,negative,B,136,4,3,1,0,0.1831,0,0,0
+We are looking for a great dim sum place with authentic food!,positive,A,39,2,2,1,0,0.0379,1,1,0
+We are looking for a great dim sum place with authentic food!,positive,B,88,5,2,1,0,0.2179,1,1,0
+"What is the most talked-about, must-try restaraunt in Conshohocken right now?",neutral,A,44,2,2,1,0,0.274,0,1,0
+"What is the most talked-about, must-try restaraunt in Conshohocken right now?",neutral,B,90,5,3,1,0,0.1747,0,0,0
+"I had enough of all the overrated, expensive places in Conshohocken. Just find me something that is actually food and affordable.",negative,A,45,2,2,1,0,0.1024,0,0,0
+"I had enough of all the overrated, expensive places in Conshohocken. Just find me something that is actually food and affordable.",negative,B,38,2,2,1,0,0.0353,0,0,0
+"I am too tired to even read a menu. Please suggest one simple, comforting dish for me in King of Prussia.",negative,A,41,2,1,1,0,0.012,0,0,0
+"I am too tired to even read a menu. Please suggest one simple, comforting dish for me in King of Prussia.",negative,B,93,6,1,1,0,0.0804,0,0,1
+I am in Conshohocken and want to find a cozy and adorable cafe to relax in.,positive,A,32,2,1,1,0,0.0728,1,0,0
+I am in Conshohocken and want to find a cozy and adorable cafe to relax in.,positive,B,71,4,1,1,0,0.1356,1,0,0
