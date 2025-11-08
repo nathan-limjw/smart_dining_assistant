@@ -7,13 +7,14 @@ from rag.retriever import INDEX_PATH, METADATA_PATH, Retriever
 
 #########PATHS
 # #local
-# DIR = os.path.dirname(os.path.abspath(__file__)) # local only
+# DIR = os.path.dirname(os.path.abspath(__file__))
+# RAG_ROOT = os.path.dirname(DIR)
 # print("initialising paths")
-# DATA_PATH = os.path.join(DIR, "../ragdata_ca")
+# DATA_PATH = os.path.join(RAG_ROOT, "ragdata_pa")
 
 # INDEX_PATH = os.path.join(DATA_PATH, "faiss_index.idx")
 # METADATA_PATH = os.path.join(DATA_PATH, "rest_metadata.pkl")
-# OUTPUT_PATH = os.path.join(DIR, "retriever_weight")
+# OUTPUT_PATH = DIR
 # os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 #ronin

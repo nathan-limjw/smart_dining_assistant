@@ -16,7 +16,7 @@ df_open = df[df['is_open']==1]
 df=df_open
 
 sample = df.groupby("stars_x", group_keys=False).apply(lambda x: x.sample(min(len(x), 100)))
-sample.to_csv("rag/chunk_sample.csv", index=False)
+sample.to_csv("rag/qa_testing/chunk_sample.csv", index=False)
 
 """
 You are a LLM that will help to create synthetic question-answer pairs for evaluating chunk size and chunk overlap for a restaurant recommendation chatbot. 
