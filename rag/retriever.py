@@ -173,23 +173,23 @@ class Retriever:
 #             print(f"score: {res['retrieval_score']:.4f}")
 #             print(f"{res['chunk_text']}")
 
-# if __name__ == "__main__":
-#     print("-------------CITY DETECTION TEST-------------")
+if __name__ == "__main__":
+    print("-------------CITY DETECTION TEST-------------")
 
-#     # load aliases
-#     with open(CITIES_PATH, "r") as f:
-#         city_aliases = json.load(f)
+    # load aliases
+    with open(CITIES_PATH, "r") as f:
+        city_aliases = json.load(f)
 
-#     test_queries = [
-#         "good sushi in Philadelphia",
-#         "cheap korean food in King of Prussia",
-#         "vegan cafes in Blue Bell",
-#         "restaurants to avoid in West Chester",
-#         "not Philadelphia but nearby",
-#         "fine dining without Bryn Mawr",
-#     ]
+    test_queries = [
+        "good sushi in Philadelphia",
+        "cheap korean food in King of Prussia",
+        "vegan cafes in Blue Bell",
+        "restaurants to avoid in West Chester",
+        "not Philadelphia but nearby",
+        "fine dining without Bryn Mawr",
+    ]
 
-#     for q in test_queries:
-#         detected = detect_city_query(q, city_aliases)
-#         print(f"Query: {q}")
-#         print(f"→ Detected city: {detected}\n")
+    for q in test_queries:
+        detected = detect_city_query(q, city_aliases)
+        print(f"Query: {q}")
+        print(f"→ Detected city: {detected}\n")
