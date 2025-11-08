@@ -62,6 +62,8 @@ python3 metadata_compile.py
 ```
 Compiles all metadata files for filtering and scoring
 
+The ```ragdata_pa``` folder is not in this repository. Please download it through https://drive.google.com/file/d/1UnlYKEcrp2Kmtk2kj1oY7_PIuqjG3rtp/view?usp=sharing if you would like to use it.
+
 ### 3. Running the retriever individually
 ```bash
 cd smart_dining_assistant
