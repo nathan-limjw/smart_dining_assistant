@@ -28,6 +28,21 @@ It is orchestrated by:
 - ```clean.py```: A helper module containing the ```format_context()``` function. This script cleans and de-duplicates the list of review chunks from the RAG module (```retriever.py```) and formats it into a clean, readable string for the LLM.
 
 ## The Generation Pipeline (How It Works)
+
+```mermaid
+flowchart LR
+
+U["User query"] --> SA["SentimentAnalyzer"]
+SA --> R["RAG Retriever"]
+R --> C["format_context_for_llm()"]
+C --> P["get_system_prompt()"]
+P --> G["call_llm()"]
+G --> A["Final chatbot response"]
+
+
+
+```
+
 When a user query is received by the main ```app.py```, this module is used in the final step:
 1. ```app.py``` gets the ```user_sentiment``` (e.g., 'negative') from the ```SentimentAnalyzer```.
 2. ```app.py``` gets the ```context_list``` from the ```Retriever```.
