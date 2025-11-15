@@ -1,6 +1,7 @@
 # run A/B test on baseline bot VS sentiment-aware bot (test questions from 'test_queries.json')  
 
 import sys
+import os
 import json
 import csv
 import time
@@ -12,6 +13,9 @@ from rag.retriever import Retriever
 from llm import prompts, generate
 from llm.clean import format_context_for_llm
 from tqdm import tqdm
+
+RESULTS_DIR = "llm_results"
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 print("System starting... Loading models...")
 
@@ -26,7 +30,7 @@ with open('test_queries.json', 'r') as f:
 print(f"Loaded {len(test_queries)} test queries.")
 
 # output csv
-output_filename = "evaluation_results.csv"
+output_filename = os.path.join(RESULTS_DIR, "evaluation_results.csv")
 with open(output_filename, 'w', newline = '', encoding = 'utf-8') as f:
     writer = csv.writer(f)
     writer.writerow([

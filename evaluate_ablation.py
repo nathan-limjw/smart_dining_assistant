@@ -1,6 +1,7 @@
 # evaluator for A/B (Baseline vs Sentiment-Aware) chatbot output
 
 import argparse
+import os
 import pandas as pd
 import csv
 import re
@@ -11,16 +12,20 @@ from sentiment_analysis.src.sentiment_api import SentimentAnalyzer
 from rag.retriever import Retriever
 from llm.clean import format_context_for_llm
 
+# --- RESULTS DIR ---
+RESULTS_DIR = "llm_results"
+os.makedirs(RESULTS_DIR, exist_ok=True)
+
 # --- TEXT PROCESSING HELPERS ---
 _word_re = re.compile(r"[A-Za-z][A-Za-z'\-]+")
 _sentence_split_re = re.compile(r"[.!?]+[\s\)]|[\n]+")
 
 def tokenize(text: str) -> list:
-    ''' Simple whitespace tokenizer '''
+    """Simple whitespace tokenizer"""
     return _word_re.findall(text or "")
 
 def sentences(text: str) -> list:
-    ''' Simple sentence splitter '''
+    """Simple sentence splitter"""
     splits = _sentence_split_re.split(text or "")
     return [s.strip() for s in splits if s.strip()]
 
@@ -37,7 +42,7 @@ def jaccard_bigram(a: str, b: str) -> float:
     return len(A & B) / len(A | B)
 
 def contains_validation_phrase(text: str) -> bool:
-    ''' Check if text contains phrases indicating validation '''
+    """Check if text contains phrases indicating validation"""
     validation_phrases = [
         "i understand",
         "that sounds",
@@ -53,7 +58,7 @@ def contains_validation_phrase(text: str) -> bool:
 
 
 def indecision_in_query(query: str) -> bool:
-    ''' Check if user query indicates indecision '''
+    """Check if user query indicates indecision"""
     indecision_phrases = [
         "i don't know",
         "can't decide",
@@ -67,13 +72,13 @@ def indecision_in_query(query: str) -> bool:
     return any(phrase in query_lower for phrase in indecision_phrases)
 
 def proper_name_candidates(text: str) -> list:
-    ''' Extract proper names from context for checking recommendations '''
+    """Extract proper names from context for checking recommendations"""
     toks = re.findall(r"[A-Z][a-zA-Z'&.-]+", text or "")
     return set(toks)
 
 # --- CONTEXT PARSING AND VENUE EXTRACTION ---
 def extract_context_venues_and_snippets(context_items):
-    ''' Extract venue names and their associated snippets from context '''
+    """Extract venue names and their associated snippets from context"""
     venue_names = set()
     name_map = {}
     snippets_by_name = defaultdict(list)
@@ -101,7 +106,7 @@ def venues_mentioned(response_text: str, name_map):
             mentioned.add(lname)
     return mentioned
 
-# --- POLICUY AND OVERLOAD CHECKS ---
+# --- POLICY AND OVERLOAD CHECKS ---
 def policy_compliance(expected_sent: str, query: str, response: str, venue_count: int) -> bool:
     s = (expected_sent or "").lower()
     resp = response or ""
@@ -227,12 +232,17 @@ def evaluate(eval_csv: str, output_csv: str, top_k: int = 5):
     # Write detailed CSV
     fieldnames = list(rows_out[0].keys()) if rows_out else []
     if output_csv:
-        with open(output_csv, "w", newline="", encoding="utf-8") as f:
+        # if user passed a relative path, put it under llm_results/
+        output_path = output_csv
+        if not os.path.isabs(output_path):
+            output_path = os.path.join(RESULTS_DIR, output_path)
+
+        with open(output_path, "w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=fieldnames)
             w.writeheader()
             for row in rows_out:
                 w.writerow(row)
-        print(f"[OK] Wrote detailed metrics → {output_csv}")
+        print(f"[OK] Wrote detailed metrics → {output_path}")
 
     # Print aggregates
     def summarize(key):
@@ -274,8 +284,23 @@ def evaluate(eval_csv: str, output_csv: str, top_k: int = 5):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--eval_csv", type=str, default="evaluation_results.csv", help="CSV produced by run_eval.py")
-    ap.add_argument("--output_csv", type=str, default="eval_metrics_detailed.csv", help="Where to write per-query metrics")
-    ap.add_argument("--top_k", type=int, default=5, help="top_k for retriever to rebuild Context")
+    ap.add_argument(
+        "--eval_csv",
+        type=str,
+        default=os.path.join(RESULTS_DIR, "evaluation_results.csv"),
+        help="CSV produced by run_eval.py",
+    )
+    ap.add_argument(
+        "--output_csv",
+        type=str,
+        default="eval_metrics_detailed.csv",
+        help="Where to write per-query metrics (saved under llm_results/ by default)",
+    )
+    ap.add_argument(
+        "--top_k",
+        type=int,
+        default=5,
+        help="top_k for retriever to rebuild Context",
+    )
     args = ap.parse_args()
     evaluate(args.eval_csv, args.output_csv, top_k=args.top_k)
