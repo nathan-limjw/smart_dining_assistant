@@ -24,7 +24,7 @@ Our system ewnsures that recommendations match both what users want (semantic co
 
 ## Components
 
-1. **Sentiment Analysis Module** (`sentiment_analysis/`)
+1. [**Sentiment Analysis Module**](./sentiment_analysis/README.md)
 - Fine-tuned DistilBERT classifier on 300,000 balanced Yelp reviews
 - 81.3% accuracy on 3-class sentiment (Positive, Neutral, Negative)
 - 0.7% error rate on extreme polarity confusion
