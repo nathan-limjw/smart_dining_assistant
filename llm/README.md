@@ -1,10 +1,15 @@
 # LLM Generation & Evaluation Module
 
 ## Overview
-This directory contains all the code responsible for the 'brain' of the sentiment-aware chatbot: generating the final response. 
+This directory contains all the code responsible for the 'brain' of the sentiment-aware chatbot: the component that generate the final LLM response.
 
-This module connects to the other project components (```sentiment_analysis``` and ```rag```) and is orchestrated by the main ```app.py``` and evaluation scripts (`run_eval.py`, `evaluate_ablation.py`) located in the project's root directory.
+This module interacts with other project components:
+- ```sentiment_analysis``` (for sentiment detection)
+- ```rag``` (for retrieving restaurant context)
 
+It is orchestrated by:
+- the main ```app.py``` (online chatbot)
+- the evaluation scripts in the project root (`run_eval.py`, `evaluate_ablation.py`)
 
 ## Directory Structure
 ```
@@ -32,6 +37,6 @@ When a user query is received by the main ```app.py```, this module is used in t
 
  
 ## Role in Evaluation
-This module is the "system under test" The evaluation scripts in the root directory (`run_eval.py` and `evaluate_ablation.py`) import funtions from this folder to conduct the A/B test. 
-- `run_evaluation.py` calls `generate.py` twice (once with `BASELINE_SYSTEM_PROMPT` and once with `get_system_prompt()`) to create the raw `evaluation_results.csv`.
-- `evaluate_ablation.py` imports `clean.py` and `prompts.py` to re-run the logic and calculate objective metrics like "Policy Compliance" based on the prompt rules defined here to create the detailed results `eval_metrics_detailed.csv`.
+This module is the "system under test" for the entire A/B evaluation pipeline. The evaluation scripts in the root directory (`run_eval.py` and `evaluate_ablation.py`) import funtions from this folder to conduct the A/B test. 
+- `run_evaluation.py` calls `generate.py` twice (once with `BASELINE_SYSTEM_PROMPT` and once with `get_system_prompt()`) -> raw output is saved to `llm_results/evaluation_results.csv`
+- `evaluate_ablation.py` imports `clean.py` and `prompts.py` to re-run the logic and calculate objective metrics like "Policy Compliance" based on the prompt rules defined here -> raw output is saved to `llm_results/eval_metrics_detailed.csv`
