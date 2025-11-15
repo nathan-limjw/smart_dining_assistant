@@ -22,12 +22,54 @@ We address these limitations through a **sentiment-aware Retrieval-Augmented Gen
 
 Our system ewnsures that recommendations match both what users want (semantic content) and how they feel (emotional tone).
 
+## Directory Structure
+```
+smart_dining_assistant/
+├── app.py
+├── data
+├── evaluate_ablation.py
+├── llm
+│   ├── __pycache__
+│   ├── clean.py
+│   ├── generate.py
+│   ├── prompts.py
+│   └── README.md
+├── llm_results
+│   ├── eval_metrics_detailed.csv
+│   └── evaluation_results.csv
+├── rag
+│   ├── __pycache__
+│   ├── city_aliases.json
+│   ├── index.py
+│   ├── metadata_compile.py
+│   ├── qa_testing
+│   ├── ragdata_pa
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── retriever_weight
+│   ├── retriever.py
+│   └── test.ipynb
+├── README.md
+├── requirements.txt
+├── run_eval.py
+├── sentiment_analysis
+│   ├── data
+│   ├── main.py
+│   ├── models
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── results
+│   └── src
+└── test_queries.json
+```
+
 ## Components
 
-1. [**Sentiment Analysis Module**](./sentiment_analysis/README.md)
+1. **Sentiment Analysis Module**
 - Fine-tuned DistilBERT classifier on 300,000 balanced Yelp reviews
 - 81.3% accuracy on 3-class sentiment (Positive, Neutral, Negative)
 - 0.7% error rate on extreme polarity confusion
+- Further details can be explored [here](./sentiment_analysis/README.md)
 
 2. 
 
@@ -41,3 +83,17 @@ Our system ewnsures that recommendations match both what users want (semantic co
 - **Negaitve F1-Score**: 82.8%
 - **Neutral F1-Score**: 74.0%
 - **Key Strength**: Only 0.7% confusion between positive and negative sentiment
+
+
+
+
+## Quick Start
+
+### Installation
+
+### Running the Chatbot
+
+
+## Dataset
+
+## Limitations 
