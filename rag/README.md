@@ -115,7 +115,7 @@ Insights:
 - Drops sharply past 0.8
 
 ## Using this component in the project
-Given a user query, the retrievr will:
+Given a user query, the retriever will:
 1. Detect cities
 2. Retrieve relevant chunks
 3. Re-rank chunks after scoring
